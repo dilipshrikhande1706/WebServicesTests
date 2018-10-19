@@ -1,21 +1,34 @@
+/*
+ *  Home Coding Excersise- QA Assessment 
+ *  Organisation: R3PI
+ *  Author: Dilip Shrikhande
+ *  Date: 19-October-2018
+ *  
+ *  Description: This test performs a Post operation (title & body as pay load) for a random user and
+ *  the verifies the response code
+ *  
+ */
+
+
 package com.r3pi.shrikhande.testscripts;
 
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
-import org.testng.AssertJUnit;
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Random;
 import static io.restassured.RestAssured.given;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
+import org.json.JSONObject;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 import com.r3pi.shrikhande.methods.Webservices;
 import com.r3pi.shrikhande.pojoclass.GetPosts;
 import com.r3pi.shrikhande.utils.EndpointURL;
@@ -41,91 +54,35 @@ public class Test03_PostTitleBodyforUser {
 	@Test
 	public void postTitleBody() {
 		
+		boolean responseCode;
 		Integer  randomNum;
+		
+		// below two lines generate a random number between range 1-10
 		Random rand = new Random();
 		randomNum = 1 + rand.nextInt((10 - 1) + 1);
-		
-		Gson gson = new GsonBuilder().create();
-		GetPosts getPosts[];
-		
-		// String URI = URL.fixedURL+EndpointURL.GET_POST_BYUSERID.getResourcePath()+Integer.toString(randomNum);
-	//	String URI =  URL.fixedURL+EndpointURL.POST_POSTS.getResourcePath();//.getResourcePath()+Integer.toString(randomNum);
-	//	String URI =  "http://jsonplaceholder.typicode.com/posts";
-				
-	//	System.out.println(URI);
-		
-		//String stringJSON = generateStringFromResource("/src/test/java/com/r3pi/shrikhande/testdata/Test03Payload.json");
-		String stringJSON = "  {\n    \"userId\": 1,\n    \"title\": \"XYZ sunt aut cbcxbfacere repellat provident occaecati excepturi optio reprehenderit\",\n    \"body\": \"SSS quia vcbcxbet suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n  }";
-		
-		System.out.println(stringJSON);
-		//response = Webservices.Post(URI, "{\n    \"userId\": 1,\n    \"title\": \"XYZ sunt aut cbcxbfacere repellat provident occaecati excepturi optio reprehenderit\",\n    \"body\": \"SSS quia vcbcxbet suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nreprehenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\"\n  }");
-		//RequestSpecification requestSpecification = RestAssured.given().contentType(ContentType.JSON).body(stringJSON);
-		
-		
-		//RequestSpecification requestSpecification = RestAssured.given().body(stringJSON);
-		//requestSpecification.contentType(ContentType.JSON);
-		//Response response = requestSpecification.post(URI, stringJSON);
-		
-		
-		
-		String myJson = "  {\\n    \\\"userId\\\": 1,\\n    \\\"title\\\": \\\"XYZ sunt aut cbcxbfacere repellat provident occaecati excepturi optio reprehenderit\\\",\\n    \\\"body\\\": \\\"SSS quia vcbcxbet suscipit\\\\nsuscipit recusandae consequuntur expedita et cum\\\\nreprehenderit molestiae ut ut quas totam\\\\nnostrum rerum est autem sunt rem eveniet architecto\\\"\\n  }";
-    	RestAssured.baseURI  = "http://jsonplaceholder.typicode.com/posts";	
 
-    	Response r = given(). contentType("application/json").
-    	body(myJson).
-        when().
-        post("");
-		//System.out.println(response);
-		//System.out.println(response.getStatusCode());
+		// line below generates endpoint urls
+		String URI = URL.fixedURL+EndpointURL.POST_POST_BYUSERID.getResourcePath()+Integer.toString(randomNum);	
+	    System.out.println(URI);
 		
-		/*if(response.getStatusCode()==200) {
+	    // in the lines below we create a json object and pass the key-value data (it is hard coded at the moment, but
+	    // when I return back from holidays I will try to put this data in a json file
+	    JSONObject jsonObj = new JSONObject()
+                .put("title","XYZ sunt aut cbcxbfacere repellat provident occaecati excepturi optio reprehenderit\\\\\\\",\\\\n    \\\\\\")
+                .put("body","XYZ sunt aut cbcxbfacere repellat provident occaecati excepturi optio reprehenderit\\\\\\\",\\\\n    \\\\\\");
+
+	    
+	    // here we perform the post operation (I haven`t used the method that I wrote as I did not have enough time to debug)
+			Response response= given()
+			.contentType("application/json")  
+			.body(jsonObj.toString())   
+			.post(URI);
 			
 			
-
-			 //String str = FileUtils.readFileToString("/src/test/java/com/r3pi/shrikhande/testdata/Test03Payload.json");
-			 //String strin = generateStringFromResource("/src/test/java/com/r3pi/shrikhande/testdata/Test03Payload.json");
+			responseCode = (response.getStatusCode() == 201); // here we check if the Post operation was successful
 			
-		getPosts= gson.fromJson(response.getBody().asString(),GetPosts[].class);
-		
-
-
-				boolean bolid= (getPosts[i].getId() == (int)getPosts[i].getId());
-				boolean boltitle= (getPosts[i].getTitle() != null);
-				boolean bolbody= (getPosts[i].getBody() != null);
-				
-				
-				AssertJUnit.assertEquals(bolid,true, "ID:"+(getPosts[i].getId())+"  is INVALID");
-
-			
-				if (bolid == true)
-				{
-					System.out.println("ID:"+(getPosts[i].getId())+"    :is a VALID ID");
-	
-				}
-
-				AssertJUnit.assertEquals(boltitle,true, "title:"+(getPosts[i].getTitle())+"  is INVALID");
-
-		
-				
-				if (boltitle == true) {
-					System.out.println(getPosts[i].getTitle()+"    :is a VALID title");
-				}
-				
-
-				AssertJUnit.assertEquals(boltitle,true, "title:"+(getPosts[i].getBody())+"  is INVALID");
-
-				if (bolbody == true) {
-			
-					System.out.println(getPosts[i].getBody()+"    :is a VALID Body");
-					System.out.println("--------------------------------------------------------------------------------------------");
-				}
-				
-
-				}*/
-			
-			
-			
-			
+			System.out.println("Status Code : "+response.getStatusCode());
+			Assert.assertEquals(responseCode, true, "Post operation was sucessfull");
 	
 	}
 	

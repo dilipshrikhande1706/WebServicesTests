@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2018-10-18T19:42:48Z" name="Default suite" finished-at="2018-10-18T19:42:51Z" duration-ms="2568">
+  <suite started-at="2018-10-19T11:47:41Z" name="Default suite" finished-at="2018-10-19T11:47:45Z" duration-ms="3503">
     <groups>
     </groups>
-    <test started-at="2018-10-18T19:42:48Z" name="Default test" finished-at="2018-10-18T19:42:51Z" duration-ms="2568">
-      <class name="com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser@707194ba]" started-at="2018-10-18T19:42:48Z" name="setup" finished-at="2018-10-18T19:42:48Z" duration-ms="25" status="PASS">
+    <test started-at="2018-10-19T11:47:41Z" name="Default test" finished-at="2018-10-19T11:47:45Z" duration-ms="3503">
+      <class name="com.r3pi.shrikhande.testscripts.Test01_UserAddressDisplayAndCheckEmailFormat">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test01_UserAddressDisplayAndCheckEmailFormat@399c4be1]" started-at="2018-10-19T11:47:41Z" name="setup" finished-at="2018-10-19T11:47:41Z" duration-ms="14" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="postTitleBody()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser@707194ba]" started-at="2018-10-18T19:42:48Z" name="postTitleBody" finished-at="2018-10-18T19:42:51Z" duration-ms="2519" status="PASS">
+        <test-method signature="showUserEmailAddress()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test01_UserAddressDisplayAndCheckEmailFormat@399c4be1]" started-at="2018-10-19T11:47:41Z" name="showUserEmailAddress" finished-at="2018-10-19T11:47:43Z" duration-ms="2202" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- showUserEmailAddress -->
+      </class> <!-- com.r3pi.shrikhande.testscripts.Test01_UserAddressDisplayAndCheckEmailFormat -->
+      <class name="com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser@291caca8]" started-at="2018-10-19T11:47:43Z" name="setup" finished-at="2018-10-19T11:47:43Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="postTitleBody()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser@291caca8]" started-at="2018-10-19T11:47:43Z" name="postTitleBody" finished-at="2018-10-19T11:47:44Z" duration-ms="632" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postTitleBody -->
       </class> <!-- com.r3pi.shrikhande.testscripts.Test03_PostTitleBodyforUser -->
+      <class name="com.r3pi.shrikhande.testscripts.Test02_GetUserPostsAndCheckIDTitleBody">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test02_GetUserPostsAndCheckIDTitleBody@385e9564]" started-at="2018-10-19T11:47:44Z" name="setup" finished-at="2018-10-19T11:47:44Z" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="checkIDTitleBody()[pri:0, instance:com.r3pi.shrikhande.testscripts.Test02_GetUserPostsAndCheckIDTitleBody@385e9564]" started-at="2018-10-19T11:47:44Z" name="checkIDTitleBody" finished-at="2018-10-19T11:47:45Z" duration-ms="624" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkIDTitleBody -->
+      </class> <!-- com.r3pi.shrikhande.testscripts.Test02_GetUserPostsAndCheckIDTitleBody -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

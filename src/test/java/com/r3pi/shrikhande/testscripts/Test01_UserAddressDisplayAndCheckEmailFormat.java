@@ -1,6 +1,16 @@
+/*
+ *  Home Coding Excersise- QA Assessment 
+ *  Organisation: R3PI
+ *  Author: Dilip Shrikhande
+ *  Date: 19-October-2018
+ *  
+ *  Description: This test performs a Get operation for a random user & Prints user`s address 
+ *  and also validates the email format.
+ *  
+ */
+
+
 package com.r3pi.shrikhande.testscripts;
-
-
 
 
 import org.testng.annotations.Test;
@@ -35,29 +45,26 @@ public class Test01_UserAddressDisplayAndCheckEmailFormat {
 		
 	}
 	
-/*	
-	@Test
-	public void showUsers() {
-		String URI = URL.fixedURL+EndpointURL.GET_USERS.getResourcePath();
-		System.out.println(URI);
-		response = Webservices.Get(URI);
-		System.out.println(response.getBody().asString());
-		
-	}	*/
 	
 	@Test
 	public void showUserEmailAddress() {
 		
 		String eMail;
 		Integer  randomNum;
+		
+		// below two lines generate a random number between range 1-10
 		Random rand = new Random();
 		randomNum = 1 + rand.nextInt((10 - 1) + 1);
 		
+		// line below generates endpoint urls
 		String URI = URL.fixedURL+EndpointURL.GET_USERS.getResourcePath()+"/"+Integer.toString(randomNum);
-		response = Webservices.Get(URI);
+		
+		
+		response = Webservices.Get(URI); // calling the Get method to perform the get operation
 		System.out.println("URI: "+URI);
 		
 		
+		// In case of success the below code prints the user address and verifies the email format
 		if(response.getStatusCode()==200) {
 			System.out.println(response.getBody().jsonPath().get("address.street"));
 			System.out.println(response.getBody().jsonPath().get("address.suite"));
@@ -68,7 +75,8 @@ public class Test01_UserAddressDisplayAndCheckEmailFormat {
 			System.out.println("--------------------------------------------------");
 			eMail = response.getBody().jsonPath().get("email");
 			
-			boolean emailvalidation = Utilities.isValidEmailAddress(eMail);
+			
+			boolean emailvalidation = Utilities.isValidEmailAddress(eMail); // to check is the email format is correct
 			//Assert.assertTrue(Utilities.isValidEmailAddress(eMail),"Email address:"+response.getBody().jsonPath().get("email")+" is Invalid");
 			Assert.assertEquals(emailvalidation,true, "eMail:"+eMail+"  is INVALID");
 			if (emailvalidation == true){

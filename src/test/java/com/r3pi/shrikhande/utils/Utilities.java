@@ -1,3 +1,16 @@
+/*
+ *  Home Coding Excersise- QA Assessment 
+ *  Organisation: R3PI
+ *  Author: Dilip Shrikhande
+ *  Date: 19-October-2018
+ *  
+ *  Description: In this class we write all the utility functions 
+ *  (example: validating an email address etc)
+ *  
+ *  
+ *  
+ */
+
 package com.r3pi.shrikhande.utils;
 
 import java.io.IOException;

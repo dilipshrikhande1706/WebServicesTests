@@ -1,3 +1,15 @@
+/*
+ *  Home Coding Excersise- QA Assessment 
+ *  Organisation: R3PI
+ *  Author: Dilip Shrikhande
+ *  Date: 19-October-2018
+ *  
+ *  Description: This is a pojo class where the raw JSON is converted to pojo- Used as an alternative to JSON Path finder
+ *  
+ *  
+ *  
+ */
+
 package com.r3pi.shrikhande.pojoclass;
 
 import com.google.gson.annotations.Expose;

@@ -1,3 +1,18 @@
+/*
+ *  Home Coding Excersise- QA Assessment 
+ *  Organisation: R3PI
+ *  Author: Dilip Shrikhande
+ *  Date: 19-October-2018
+ *  
+ *  Description: This below enum is where we strore resource endpoints and are later used in tests to 
+ *  form endpoint URIs on the fly
+ *  
+ *  
+ *  
+ */
+
+
+
 package com.r3pi.shrikhande.utils;
 
 public enum EndpointURL {
@@ -10,6 +25,7 @@ public enum EndpointURL {
 	GET_COMMENT_BYPOSTID("/comments?postId=1"),	
 	GET_POST_BYUSERID	("/posts?userId="),
 	POST_POSTS("/posts"),
+	POST_POST_BYUSERID	("/posts?userId="),
 	UPDATE_POST("/posts/1"),	
 	DELETE_POST("/posts/1");
 

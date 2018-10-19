@@ -1,3 +1,18 @@
+/*
+ *  Home Coding Excersise- QA Assessment 
+ *  Organisation: R3PI
+ *  Author: Dilip Shrikhande
+ *  Date: 19-October-2018
+ *  
+ *  Description: This test performs a Get operation for a random user & validates Id, Title and Body
+ *  
+ *  
+ * 
+ *  
+ */
+
+
+
 package com.r3pi.shrikhande.testscripts;
 
 import java.util.Random;
@@ -33,15 +48,18 @@ public class Test02_GetUserPostsAndCheckIDTitleBody {
 	public void checkIDTitleBody() {
 		
 		Integer  randomNum;
+		
+		// below two lines generate a random number between range 1-10
 		Random rand = new Random();
 		randomNum = 1 + rand.nextInt((10 - 1) + 1);
 		
 		Gson gson = new GsonBuilder().create();
 		GetPosts getPosts[];
 		
+		// line below generates endpoint urls
 		String URI = URL.fixedURL+EndpointURL.GET_POST_BYUSERID.getResourcePath()+Integer.toString(randomNum);
 		System.out.println("URI: "+URI);
-		response = Webservices.Get(URI);
+		response = Webservices.Get(URI); // calling the Get method to perform the get operation
 		boolean bod;
 		
 		
@@ -50,6 +68,8 @@ public class Test02_GetUserPostsAndCheckIDTitleBody {
 		
 		getPosts= gson.fromJson(response.getBody().asString(),GetPosts[].class);
 		
+		
+		// below code validates ID, Title and Bods for all the user posts
 		
 			for (int i=1; i<getPosts.length;i++) {
 				
